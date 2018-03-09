@@ -8,7 +8,7 @@ module.exports = function(router, mongoose) {
 
   router.route('/getOffersByCategory').get(function(req, res) {
     var offers = [];
-    var category = req.query.category;
+    var category = sanitizeUtil(req.query.category);
     try {
       fs.readdirSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + category + '/').forEach(file => {
         offers.push(JSON.parse(fs.readFileSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + category + '/' + file, 'utf8')));
