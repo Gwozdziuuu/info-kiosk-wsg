@@ -77,7 +77,7 @@ ik.main.jobOffer.RemoveView = treelad.Class.create({
   showOffers: function() {
     var t = this;
     $.ajax({
-      url: 'http://localhost:9001/api/getOffersByCategory?category=' + t.selectedCategory,
+      url: './api/getOffersByCategory?category=' + t.selectedCategory,
       type: 'get'
     })
     .then(function(data) {
@@ -127,7 +127,7 @@ ik.main.jobOffer.RemoveView = treelad.Class.create({
       offers: t.selectedOffers
     }
     $.ajax({
-      url: 'http://localhost:9001/api/removeOffer',
+      url: './api/removeOffer',
       type: 'post',
       data: model
     })

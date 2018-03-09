@@ -105,7 +105,7 @@ ik.main.jobOffer.AddView = treelad.Class.create({
 
     if (validate) {
       $.ajax({
-        url: 'http://localhost:9001/api/addOffer',
+        url: './api/addOffer',
         type: 'post',
         data: offer
       })

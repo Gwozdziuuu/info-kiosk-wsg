@@ -23,7 +23,7 @@ module.exports = {
     });
 
     loadRestControllers(router, ['DataProvider', 'DataPublisher']);
-    app.use('/api', router);
+    app.use('/WebContent/api', router);
     logRegisteredServices(router);
     loadWebContent(app);
   }
