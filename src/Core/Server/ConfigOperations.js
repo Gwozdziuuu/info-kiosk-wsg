@@ -48,7 +48,8 @@ function logRegisteredServices(router) {
 }
 
 function loadWebContent(app) {
-  app.use(serveStatic(path.join(__dirname, '..', '..', '..', '..'))).listen(packageDataFile.config.serverPort, function() {
+  app.use(serveStatic(path.join(__dirname, '..', '..', '..'))).listen(packageDataFile.config.serverPort, function() {
+    console.log(path.join(__dirname, '..', '..', '..'));
     console.log('Server started on port: ' + packageDataFile.config.serverPort);
   });
 }
