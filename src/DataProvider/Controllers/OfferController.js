@@ -9,13 +9,13 @@ module.exports = function(router, mongoose) {
     var offer = req.body;
     var data = JSON.stringify(offer);
     var title = sanitizeUtil(offer.title);
-    if (fse.existsSync('JobOffers/' + offer.category + '/' + title + ".json")) {
+    if (fse.existsSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + offer.category + '/' + title + ".json")) {
       res.json({
         "error": 1,
         "description": "Oferta o podanym tytule jest już w systemie"
       });
     } else {
-      fse.outputFileSync('JobOffers/' + offer.category + '/' + title + ".json", data);
+      fse.outputFileSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + offer.category + '/' + title + ".json", data);
       res.json({
         "error": 0,
         "description": "Oferta została poprawnie dodana"
@@ -27,7 +27,7 @@ module.exports = function(router, mongoose) {
     var offer = req.body;
     var data = JSON.stringify(offer);
     var title = sanitizeUtil(offer.title);
-    fse.outputFileSync('JobOffers/' + offer.category + '/' + title + ".json", data);
+    fse.outputFileSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + offer.category + '/' + title + ".json", data);
     res.json("edited");
   });
 
@@ -35,7 +35,7 @@ module.exports = function(router, mongoose) {
     var category = req.body.category;
     var offers = req.body.offers;
     for (var i in offers) {
-      fse.removeSync('JobOffers/' + category + '/' + sanitizeUtil(offers[i]) + '.json');
+      fse.removeSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + category + '/' + sanitizeUtil(offers[i]) + '.json');
     }
     res.json("removed");
   });

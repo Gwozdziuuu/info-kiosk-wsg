@@ -10,8 +10,8 @@ module.exports = function(router, mongoose) {
     var offers = [];
     var category = req.query.category;
     try {
-      fs.readdirSync('JobOffers/' + category + '/').forEach(file => {
-        offers.push(JSON.parse(fs.readFileSync('JobOffers/' + category + '/' + file, 'utf8')));
+      fs.readdirSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + category + '/').forEach(file => {
+        offers.push(JSON.parse(fs.readFileSync(process.env.OPENSHIFT_DATA_DIR + 'JobOffers/' + category + '/' + file, 'utf8')));
       })
     } catch (err) {
       console.error("No category name: " + category)
