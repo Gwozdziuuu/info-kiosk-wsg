@@ -21,6 +21,6 @@
     "truncate-utf8-bytes": "^1.0.2"
   },
   "config": {
-    "serverPort": 9001
+    "serverPort": 8080
   }
 }
